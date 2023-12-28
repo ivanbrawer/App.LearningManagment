@@ -1,0 +1,101 @@
+﻿<Page
+    x:Class="UWP.LearningManagement.InstructorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP.LearningManagement"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Courses" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+            <TextBlock Grid.Column="1" Text="People" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding Query, Mode=TwoWay}"/>
+            <Button Grid.Column="1" Click="SearchCourse_Click" FontSize="20" Content="Search Course" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="DarkOliveGreen"/>
+            <TextBox Grid.Column="2" Text="{Binding Query, Mode=TwoWay}"/>
+            <Button Grid.Column="3" Click="SearchPerson_Click" FontSize="20" Content="Search Person" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="DarkOliveGreen"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name ="CourseList" Grid.Column="0" ItemsSource="{Binding Courses}" 
+                     SelectedItem="{Binding SelectedCourse}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Grid.Column="0" Text="{Binding DetailDisplay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name ="PersonList" Grid.Column="1" ItemsSource="{Binding People}"
+                      SelectedItem="{Binding SelectedPerson}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Grid.Column="1" Text="{Binding DisplayPeople, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+       
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Content="Add Course" FontSize="15" Click="AddCourse_Click"/>
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Content="Edit Course" FontSize="15" Click="EditCourse_Click"/>
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Content="Remove Course" FontSize="15" Click="RemoveCourse_Click"/>
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Content="Add Instructor" FontSize="15" Click ="AddInstructor_Click" />
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4" Content="Add Freshman" FontSize="15" Click ="AddFreshman_Click" />
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="5" Content="Add Sophomore" FontSize="15" Click ="AddSophomore_Click" />
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="6" Content="Add Junior" FontSize="15" Click ="AddJunior_Click" />
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="7" Content="Add Senior" FontSize="15" Click ="AddSenior_Click" />
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="8" Content="Add TA" FontSize="15" Click ="AddTA_Click" />
+            <Button Background="DarkOliveGreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="9" Content="Remove Person" FontSize="15" Click="RemovePerson_Click"/>
+        </Grid>
+        
+        
+        
+
+    </Grid>
+</Page>
